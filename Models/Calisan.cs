@@ -16,11 +16,15 @@ namespace SalonCruella.Models
         [StringLength(100, ErrorMessage = "Uzmanlık alanı en fazla 100 karakter olabilir.")]
         public string UzmanlikAlani { get; set; }
 
+        [Required(ErrorMessage = "Uygunluk saatleri zorunludur.")] 
+        [StringLength(100, ErrorMessage = "Uygunluk saatleri en fazla 100 karakter olabilir.")]
+        public string UygunlukSaatleri { get; set; }
+
         // Yabancı Anahtar: Hangi salona bağlı olduğunu belirtir
         [ForeignKey("Salon")]
         public int SalonId { get; set; }
 
         // Navigation Property: Bağlantılı salon bilgisi
-        public Salon Salon { get; set; }
+        public virtual Salon Salon { get; set; }
     }
 }
