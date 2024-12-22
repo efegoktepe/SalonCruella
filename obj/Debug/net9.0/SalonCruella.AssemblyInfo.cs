@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SalonCruella")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c9ae0977dbaec478c178e6bb04797ce555313e1a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e645a41b0f8727f4291d33931cfd2d14d84cfb93")]
 [assembly: System.Reflection.AssemblyProductAttribute("SalonCruella")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SalonCruella")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
