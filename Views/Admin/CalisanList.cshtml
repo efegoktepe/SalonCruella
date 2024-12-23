@@ -1,0 +1,18 @@
+@model IEnumerable<SalonCruella.Models.Calisan>
+
+<h1>Çalışan Listesi</h1>
+<table>
+    <tr>
+        <th>Adı</th>
+        <th>Uzmanlık Alanı</th>
+        <th>Uygunluk Saatleri</th>
+    </tr>
+    @foreach (var calisan in Model)
+    {
+        <tr>
+            <td>@calisan.Adi</td>
+            <td>@calisan.UzmanlikAlani</td>
+            <td>@calisan.UygunlukSaatleri</td>
+        </tr>
+    }
+</table>

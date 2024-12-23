@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using SalonCruella.Models;
 
 namespace SalonCruella.Data
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<IdentityUser>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
@@ -15,12 +17,17 @@ namespace SalonCruella.Data
         {
             base.OnModelCreating(modelBuilder);
 
+            // Identity tablolarını konfigüre etmek için base çağrısı gerekiyor.
+            base.OnModelCreating(modelBuilder);
+
+            // Randevu -> Calisan ilişkisi: ON DELETE RESTRICT
             modelBuilder.Entity<Randevu>()
                 .HasOne(r => r.Calisan)
                 .WithMany()
                 .HasForeignKey(r => r.CalisanId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            // Randevu -> Salon ilişkisi: ON DELETE RESTRICT
             modelBuilder.Entity<Randevu>()
                 .HasOne(r => r.Salon)
                 .WithMany()
