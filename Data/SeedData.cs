@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using SalonCruella.Models;
 
 namespace SalonCruella.Data
 {
@@ -8,25 +10,57 @@ namespace SalonCruella.Data
         {
             var userManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
             var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            var context = serviceProvider.GetRequiredService<AppDbContext>();
+
+            // Veritabanını oluştur ve en son migrationları uygula
+            context.Database.EnsureCreated();
 
             // Rolleri oluştur
-            if (!await roleManager.RoleExistsAsync("Admin"))
+            string adminRole = "Admin";
+            if (!await roleManager.RoleExistsAsync(adminRole))
             {
-                await roleManager.CreateAsync(new IdentityRole("Admin"));
+                await roleManager.CreateAsync(new IdentityRole(adminRole));
             }
 
             // Admin kullanıcıyı oluştur
-            var adminUser = await userManager.FindByEmailAsync("OgrenciNumarasi@sakarya.edu.tr");
+            string adminEmail = "B211210052@sakarya.edu.tr";
+            string adminPassword = "Admin123!";
+
+            var adminUser = await userManager.FindByEmailAsync(adminEmail);
             if (adminUser == null)
             {
-                var user = new IdentityUser
+                adminUser = new IdentityUser
                 {
-                    UserName = "OgrenciNumarasi@sakarya.edu.tr",
-                    Email = "OgrenciNumarasi@sakarya.edu.tr",
+                    UserName = adminEmail,
+                    Email = adminEmail,
                     EmailConfirmed = true
                 };
-                await userManager.CreateAsync(user, "sau"); // Varsayılan şifre
-                await userManager.AddToRoleAsync(user, "Admin");
+
+                await userManager.CreateAsync(adminUser, adminPassword);
+                await userManager.AddToRoleAsync(adminUser, adminRole);
+            }
+
+            // Salonları ekle
+            if (!context.Salonlar.Any())
+            {
+                context.Salonlar.AddRange(
+                    new Salon
+                    {
+                        Adi = "Salon Cruella Atatürk Şubesi",
+                        Adres = "Atatürk Mahallesi, Gül Caddesi No: 28, Kat: 2, Daire: 10, Beylikdüzü, İstanbul"
+                    },
+                    new Salon
+                    {
+                        Adi = "Salon Cruella Bahçelievler",
+                        Adres = "Bahçelievler Mahallesi, Papatya Sokak No: 16, Kat: 4, Daire: 12, Kadıköy, İstanbul"
+                    },
+                    new Salon
+                    {
+                        Adi = "Salon Cruella Cekmeköy",
+                        Adres = "Çekmeköy Mahallesi, Defne Caddesi No: 5, Kat: 1, Daire: 3, Çekmeköy, İstanbul"
+                    }
+                );
+                await context.SaveChangesAsync();
             }
         }
     }

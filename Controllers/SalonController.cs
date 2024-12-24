@@ -1,9 +1,6 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SalonCruella.Data;
 using SalonCruella.Models;
@@ -22,22 +19,22 @@ namespace SalonCruella.Controllers
         // GET: Salon
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Salonlar.ToListAsync());
+            var salonlar = await _context.Salonlar.ToListAsync();
+            return View(salonlar);
         }
 
         // GET: Salon/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
+            if (!id.HasValue)
             {
-                return NotFound();
+                return BadRequest("Geçersiz salon ID.");
             }
 
-            var salon = await _context.Salonlar
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var salon = await _context.Salonlar.FindAsync(id);
             if (salon == null)
             {
-                return NotFound();
+                return NotFound("Salon bulunamadı.");
             }
 
             return View(salon);
@@ -50,85 +47,90 @@ namespace SalonCruella.Controllers
         }
 
         // POST: Salon/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Adi,Adres")] Salon salon)
+        public async Task<IActionResult> Create([Bind("Adi,Adres")] Salon salon)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
+            {
+                return View(salon);
+            }
+
+            try
             {
                 _context.Add(salon);
                 await _context.SaveChangesAsync();
+                TempData["SuccessMessage"] = "Salon başarıyla eklendi.";
                 return RedirectToAction(nameof(Index));
             }
-            return View(salon);
+            catch
+            {
+                ModelState.AddModelError("", "Salon eklenirken bir hata oluştu.");
+                return View(salon);
+            }
         }
 
         // GET: Salon/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
+            if (!id.HasValue)
             {
-                return NotFound();
+                return BadRequest("Geçersiz salon ID.");
             }
 
             var salon = await _context.Salonlar.FindAsync(id);
             if (salon == null)
             {
-                return NotFound();
+                return NotFound("Salon bulunamadı.");
             }
+
             return View(salon);
         }
 
         // POST: Salon/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Adi,Adres")] Salon salon)
         {
             if (id != salon.Id)
             {
-                return NotFound();
+                return BadRequest("Salon ID eşleşmiyor.");
             }
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(salon);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!SalonExists(salon.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                return View(salon);
+            }
+
+            try
+            {
+                _context.Update(salon);
+                await _context.SaveChangesAsync();
+                TempData["SuccessMessage"] = "Salon başarıyla güncellendi.";
                 return RedirectToAction(nameof(Index));
             }
-            return View(salon);
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!SalonExists(salon.Id))
+                {
+                    return NotFound("Salon bulunamadı.");
+                }
+                throw;
+            }
         }
 
         // GET: Salon/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
+            if (!id.HasValue)
             {
-                return NotFound();
+                return BadRequest("Geçersiz salon ID.");
             }
 
-            var salon = await _context.Salonlar
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var salon = await _context.Salonlar.FindAsync(id);
             if (salon == null)
             {
-                return NotFound();
+                return NotFound("Salon bulunamadı.");
             }
 
             return View(salon);
@@ -139,14 +141,22 @@ namespace SalonCruella.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var salon = await _context.Salonlar.FindAsync(id);
-            if (salon != null)
+            try
             {
-                _context.Salonlar.Remove(salon);
+                var salon = await _context.Salonlar.FindAsync(id);
+                if (salon != null)
+                {
+                    _context.Salonlar.Remove(salon);
+                    await _context.SaveChangesAsync();
+                    TempData["SuccessMessage"] = "Salon başarıyla silindi.";
+                }
+                return RedirectToAction(nameof(Index));
             }
-
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            catch
+            {
+                TempData["ErrorMessage"] = "Salon silinirken bir hata oluştu.";
+                return RedirectToAction(nameof(Index));
+            }
         }
 
         private bool SalonExists(int id)

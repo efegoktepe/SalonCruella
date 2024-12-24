@@ -15,12 +15,20 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        // Ana sayfa için bir görünüm döner
         return View();
     }
 
     public IActionResult Privacy()
     {
+        // Gizlilik politikası sayfası için bir görünüm döner
         return View();
+    }
+
+    public IActionResult GoToAdminPanel()
+    {
+        // Admin paneline yönlendirme
+        return RedirectToAction("Index", "Admin");
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -22,24 +21,27 @@ namespace SalonCruella.Controllers
         // GET: Calisan
         public async Task<IActionResult> Index()
         {
-            var appDbContext = _context.Calisanlar.Include(c => c.Salon);
-            return View(await appDbContext.ToListAsync());
+            var calisanlar = await _context.Calisanlar.Include(c => c.Salon).ToListAsync();
+            return View(calisanlar);
         }
 
         // GET: Calisan/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
+            if (!id.HasValue)
             {
-                return NotFound();
+                TempData["ErrorMessage"] = "Geçersiz Çalışan ID.";
+                return RedirectToAction(nameof(Index));
             }
 
             var calisan = await _context.Calisanlar
                 .Include(c => c.Salon)
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (calisan == null)
             {
-                return NotFound();
+                TempData["ErrorMessage"] = "Çalışan bulunamadı.";
+                return RedirectToAction(nameof(Index));
             }
 
             return View(calisan);
@@ -48,86 +50,112 @@ namespace SalonCruella.Controllers
         // GET: Calisan/Create
         public IActionResult Create()
         {
-            ViewData["SalonId"] = new SelectList(_context.Salonlar, "Id", "Adi");
+            ViewBag.Salonlar = new SelectList(_context.Salonlar, "Id", "Adi");
             return View();
         }
 
         // POST: Calisan/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Adi,UzmanlikAlani,UygunlukSaatleri,SalonId")] Calisan calisan)
+        public async Task<IActionResult> Create([Bind("Adi,UzmanlikAlani,BaslangicSaati,BitisSaati,SalonId")] Calisan calisan)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
+            {
+                // ModelState hatalarını loglama
+                foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    Console.WriteLine($"ModelState Hatası: {error.ErrorMessage}");
+                }
+                TempData["ErrorMessage"] = "Geçersiz giriş. Lütfen tüm alanları doğru doldurun.";
+                ViewBag.Salonlar = new SelectList(_context.Salonlar, "Id", "Adi", calisan.SalonId);
+                return View(calisan);
+            }
+
+            try
             {
                 _context.Add(calisan);
-                await _context.SaveChangesAsync();
+                int result = await _context.SaveChangesAsync();
+                if (result > 0)
+                {
+                    Console.WriteLine("Çalışan başarıyla kaydedildi.");
+                }
+                else
+                {
+                    Console.WriteLine("Çalışan kaydedilemedi. Veritabanına yazılamadı.");
+                }
+                TempData["SuccessMessage"] = "Çalışan başarıyla eklendi.";
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["SalonId"] = new SelectList(_context.Salonlar, "Id", "Adi", calisan.SalonId);
-            return View(calisan);
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = "Çalışan eklenirken bir hata oluştu.";
+                Console.WriteLine($"Veritabanı Hatası: {ex.Message}");
+                ViewBag.Salonlar = new SelectList(_context.Salonlar, "Id", "Adi", calisan.SalonId);
+                return View(calisan);
+            }
         }
 
         // GET: Calisan/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
+            if (!id.HasValue)
             {
-                return NotFound();
+                TempData["ErrorMessage"] = "Geçersiz Çalışan ID.";
+                return RedirectToAction(nameof(Index));
             }
 
             var calisan = await _context.Calisanlar.FindAsync(id);
             if (calisan == null)
             {
-                return NotFound();
+                TempData["ErrorMessage"] = "Çalışan bulunamadı.";
+                return RedirectToAction(nameof(Index));
             }
-            ViewData["SalonId"] = new SelectList(_context.Salonlar, "Id", "Adi", calisan.SalonId);
+
+            ViewBag.Salonlar = new SelectList(_context.Salonlar, "Id", "Adi", calisan.SalonId);
             return View(calisan);
         }
 
         // POST: Calisan/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Adi,UzmanlikAlani,UygunlukSaatleri,SalonId")] Calisan calisan)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Adi,UzmanlikAlani,BaslangicSaati,BitisSaati,SalonId")] Calisan calisan)
         {
             if (id != calisan.Id)
             {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(calisan);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!CalisanExists(calisan.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                TempData["ErrorMessage"] = "Çalışan ID eşleşmiyor.";
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["SalonId"] = new SelectList(_context.Salonlar, "Id", "Adi", calisan.SalonId);
-            return View(calisan);
+
+            if (!ModelState.IsValid)
+            {
+                TempData["ErrorMessage"] = "Geçersiz giriş. Lütfen tüm alanları doğru doldurun.";
+                ViewBag.Salonlar = new SelectList(_context.Salonlar, "Id", "Adi", calisan.SalonId);
+                return View(calisan);
+            }
+
+            try
+            {
+                _context.Update(calisan);
+                await _context.SaveChangesAsync();
+                TempData["SuccessMessage"] = "Çalışan başarıyla güncellendi.";
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = "Çalışan güncellenirken bir hata oluştu.";
+                Console.WriteLine($"Hata: {ex.Message}");
+                ViewBag.Salonlar = new SelectList(_context.Salonlar, "Id", "Adi", calisan.SalonId);
+                return View(calisan);
+            }
         }
 
         // GET: Calisan/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
+            if (!id.HasValue)
             {
-                return NotFound();
+                TempData["ErrorMessage"] = "Geçersiz Çalışan ID.";
+                return RedirectToAction(nameof(Index));
             }
 
             var calisan = await _context.Calisanlar
@@ -135,7 +163,8 @@ namespace SalonCruella.Controllers
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (calisan == null)
             {
-                return NotFound();
+                TempData["ErrorMessage"] = "Çalışan bulunamadı.";
+                return RedirectToAction(nameof(Index));
             }
 
             return View(calisan);
@@ -146,19 +175,23 @@ namespace SalonCruella.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var calisan = await _context.Calisanlar.FindAsync(id);
-            if (calisan != null)
+            try
             {
-                _context.Calisanlar.Remove(calisan);
+                var calisan = await _context.Calisanlar.FindAsync(id);
+                if (calisan != null)
+                {
+                    _context.Calisanlar.Remove(calisan);
+                    await _context.SaveChangesAsync();
+                    TempData["SuccessMessage"] = "Çalışan başarıyla silindi.";
+                }
+                return RedirectToAction(nameof(Index));
             }
-
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool CalisanExists(int id)
-        {
-            return _context.Calisanlar.Any(e => e.Id == id);
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = "Çalışan silinirken bir hata oluştu.";
+                Console.WriteLine($"Hata: {ex.Message}");
+                return RedirectToAction(nameof(Index));
+            }
         }
     }
 }

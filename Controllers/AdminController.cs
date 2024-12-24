@@ -1,9 +1,10 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SalonCruella.Data;
-using SalonCruella.Models;
 
 namespace SalonCruella.Controllers
 {
+    [Authorize(Roles = "Admin")] // Sadece Admin rolüne sahip kullanıcılar erişebilir
     public class AdminController : Controller
     {
         private readonly AppDbContext _context;
@@ -15,7 +16,6 @@ namespace SalonCruella.Controllers
 
         public IActionResult Index()
         {
-            // Admin paneline ait bir ana sayfa
             return View();
         }
 
@@ -36,7 +36,5 @@ namespace SalonCruella.Controllers
             var randevular = _context.Randevular.ToList();
             return View(randevular);
         }
-
-        // Diğer admin işlemleri burada tanımlanabilir
     }
 }
