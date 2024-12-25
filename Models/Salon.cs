@@ -6,6 +6,7 @@ namespace SalonCruella.Models
     public class Salon
     {
         [Key] // Birincil anahtar tanımlaması
+        [Required(ErrorMessage = "Salon ID zorunludur.")] // Zorunlu alan olarak tanımlama
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Salon adı zorunludur.")] // Boş bırakılamaz

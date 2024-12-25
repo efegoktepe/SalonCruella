@@ -2,12 +2,14 @@
     ViewData["Title"] = "Admin Panel";
 }
 
-<div class="container">
-    <h1 class="mt-5">Admin Panel</h1>
-    <p>Admin paneline hoş geldiniz! Buradan sistemin genel işleyişini kontrol edebilirsiniz.</p>
-    <ul>
-        <li><a href="/Admin/SalonList">Salonları Yönet</a></li>
-        <li><a href="/Admin/CalisanList">Çalışanları Yönet</a></li>
-        <li><a href="/Admin/RandevuList">Randevuları Yönet</a></li>
-    </ul>
+<div class="admin-panel">
+    <div class="admin-header">
+        <h1>Admin Panel</h1>
+        <p>Admin paneline hoş geldiniz! Buradan sistemin genel işleyişini kontrol edebilirsiniz.</p>
+    </div>
+    <div class="admin-links">
+        <a href="/Salon" class="admin-link btn btn-primary">Salonları Yönet</a>
+        <a href="/Calisan" class="admin-link btn btn-success">Çalışanları Yönet</a>
+        <a href="/Randevu" class="admin-link btn btn-warning">Randevuları Yönet</a>
+    </div>
 </div>

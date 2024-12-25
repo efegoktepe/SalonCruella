@@ -1,5 +1,17 @@
 ﻿<Project>
   <ItemGroup>
+    <StaticWebAssetEndpoint Include="_content/SalonCruella/css/admin-panel.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\admin-panel.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-iZwviiPlP0awjMJyJraTmhW4K04M8irFgl2rcJocSxY="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1019"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022iZwviiPlP0awjMJyJraTmhW4K04M8irFgl2rcJocSxY=\u0022"},{"Name":"Last-Modified","Value":"Tue, 24 Dec 2024 22:11:22 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/SalonCruella/css/admin-panel.rb9d779ann.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\admin-panel.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"rb9d779ann"},{"Name":"integrity","Value":"sha256-iZwviiPlP0awjMJyJraTmhW4K04M8irFgl2rcJocSxY="},{"Name":"label","Value":"_content/SalonCruella/css/admin-panel.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1019"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022iZwviiPlP0awjMJyJraTmhW4K04M8irFgl2rcJocSxY=\u0022"},{"Name":"Last-Modified","Value":"Tue, 24 Dec 2024 22:11:22 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/SalonCruella/css/site.b9sayid5wm.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>

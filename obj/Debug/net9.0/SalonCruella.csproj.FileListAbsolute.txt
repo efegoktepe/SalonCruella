@@ -392,3 +392,4 @@ C:\Users\Efe\Desktop\SalonCruella\obj\Debug\net9.0\refint\SalonCruella.dll
 C:\Users\Efe\Desktop\SalonCruella\obj\Debug\net9.0\SalonCruella.pdb
 C:\Users\Efe\Desktop\SalonCruella\obj\Debug\net9.0\SalonCruella.genruntimeconfig.cache
 C:\Users\Efe\Desktop\SalonCruella\obj\Debug\net9.0\ref\SalonCruella.dll
+C:\Users\Efe\Desktop\SalonCruella\obj\Debug\net9.0\compressed\7wck3nkruh-rb9d779ann.gz

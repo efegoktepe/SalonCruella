@@ -46,16 +46,19 @@ namespace SalonCruella.Data
                 context.Salonlar.AddRange(
                     new Salon
                     {
+                        Id =1,
                         Adi = "Salon Cruella Atatürk Şubesi",
                         Adres = "Atatürk Mahallesi, Gül Caddesi No: 28, Kat: 2, Daire: 10, Beylikdüzü, İstanbul"
                     },
                     new Salon
                     {
+                        Id =2,
                         Adi = "Salon Cruella Bahçelievler",
                         Adres = "Bahçelievler Mahallesi, Papatya Sokak No: 16, Kat: 4, Daire: 12, Kadıköy, İstanbul"
                     },
                     new Salon
                     {
+                        Id =3,
                         Adi = "Salon Cruella Cekmeköy",
                         Adres = "Çekmeköy Mahallesi, Defne Caddesi No: 5, Kat: 1, Daire: 3, Çekmeköy, İstanbul"
                     }

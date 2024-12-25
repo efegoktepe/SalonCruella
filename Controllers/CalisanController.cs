@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using SalonCruella.Areas.Identity.Data;
 using SalonCruella.Data;
 using SalonCruella.Models;
 
@@ -54,46 +55,11 @@ namespace SalonCruella.Controllers
             return View();
         }
 
-        // POST: Calisan/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Adi,UzmanlikAlani,BaslangicSaati,BitisSaati,SalonId")] Calisan calisan)
-        {
-            if (!ModelState.IsValid)
-            {
-                // ModelState hatalarını loglama
-                foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
-                {
-                    Console.WriteLine($"ModelState Hatası: {error.ErrorMessage}");
-                }
-                TempData["ErrorMessage"] = "Geçersiz giriş. Lütfen tüm alanları doğru doldurun.";
-                ViewBag.Salonlar = new SelectList(_context.Salonlar, "Id", "Adi", calisan.SalonId);
-                return View(calisan);
-            }
-
-            try
-            {
-                _context.Add(calisan);
-                int result = await _context.SaveChangesAsync();
-                if (result > 0)
-                {
-                    Console.WriteLine("Çalışan başarıyla kaydedildi.");
-                }
-                else
-                {
-                    Console.WriteLine("Çalışan kaydedilemedi. Veritabanına yazılamadı.");
-                }
-                TempData["SuccessMessage"] = "Çalışan başarıyla eklendi.";
-                return RedirectToAction(nameof(Index));
-            }
-            catch (Exception ex)
-            {
-                TempData["ErrorMessage"] = "Çalışan eklenirken bir hata oluştu.";
-                Console.WriteLine($"Veritabanı Hatası: {ex.Message}");
-                ViewBag.Salonlar = new SelectList(_context.Salonlar, "Id", "Adi", calisan.SalonId);
-                return View(calisan);
-            }
-        }
+         // POST: Calisan/Create
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+   
+        
 
         // GET: Calisan/Edit/5
         public async Task<IActionResult> Edit(int? id)

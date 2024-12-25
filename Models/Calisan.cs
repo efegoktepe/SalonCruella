@@ -23,9 +23,9 @@ namespace SalonCruella.Models
         [Required(ErrorMessage = "Bitiş saati zorunludur.")]
         public TimeSpan BitisSaati { get; set; }
 
+        // Zorunlu olmaktan çıkarmak için [Required] attribute'ünü kaldırın
         [ForeignKey("Salon")]
-        [Required(ErrorMessage = "Salon seçimi zorunludur.")]
-        public int SalonId { get; set; }
+        public int? SalonId { get; set; }
 
         public virtual Salon Salon { get; set; }
     }

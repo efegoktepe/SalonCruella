@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Bg0/2xzCYATk7gru/18QZleC8+ad+D57tRZc6Deiegw=",
+  "Hash": "wfBvm5MgYSMEv4V/gsIeWJRMHsAOkJSsJG99g30eYt4=",
   "Source": "SalonCruella",
   "BasePath": "_content/SalonCruella",
   "Mode": "Default",
@@ -1800,6 +1800,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Efe\\Desktop\\SalonCruella\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Identity": "C:\\Users\\Efe\\Desktop\\SalonCruella\\obj\\Debug\\net9.0\\compressed\\7wck3nkruh-rb9d779ann.gz",
+      "SourceId": "SalonCruella",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Efe\\Desktop\\SalonCruella\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "_content/SalonCruella",
+      "RelativePath": "css/admin-panel#[.{fingerprint=rb9d779ann}]?.css.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\Efe\\Desktop\\SalonCruella\\wwwroot\\css\\admin-panel.css",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "a8767gcavr",
+      "Integrity": "GlFwG1HcT3JcQM7Clxm90FIt84TcVXfAf3JBfO2youo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\Efe\\Desktop\\SalonCruella\\wwwroot\\css\\admin-panel.css"
     },
     {
       "Identity": "C:\\Users\\Efe\\Desktop\\SalonCruella\\obj\\Debug\\net9.0\\compressed\\8axix7wldr-fsbi9cje9m.gz",
@@ -4028,6 +4049,27 @@
       "OriginalItemSpec": "C:\\Users\\Efe\\Desktop\\SalonCruella\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\SalonCruella.bundle.scp.css"
     },
     {
+      "Identity": "C:\\Users\\Efe\\Desktop\\SalonCruella\\wwwroot\\css\\admin-panel.css",
+      "SourceId": "SalonCruella",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Efe\\Desktop\\SalonCruella\\wwwroot\\",
+      "BasePath": "_content/SalonCruella",
+      "RelativePath": "css/admin-panel#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "rb9d779ann",
+      "Integrity": "iZwviiPlP0awjMJyJraTmhW4K04M8irFgl2rcJocSxY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\admin-panel.css"
+    },
+    {
       "Identity": "C:\\Users\\Efe\\Desktop\\SalonCruella\\wwwroot\\css\\site.css",
       "SourceId": "SalonCruella",
       "SourceType": "Discovered",
@@ -5352,6 +5394,304 @@
     }
   ],
   "Endpoints": [
+    {
+      "Route": "css/admin-panel.css",
+      "AssetFile": "C:\\Users\\Efe\\Desktop\\SalonCruella\\obj\\Debug\\net9.0\\compressed\\7wck3nkruh-rb9d779ann.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.002283105023"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "437"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"GlFwG1HcT3JcQM7Clxm90FIt84TcVXfAf3JBfO2youo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Dec 2024 22:11:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"iZwviiPlP0awjMJyJraTmhW4K04M8irFgl2rcJocSxY=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-iZwviiPlP0awjMJyJraTmhW4K04M8irFgl2rcJocSxY="
+        }
+      ]
+    },
+    {
+      "Route": "css/admin-panel.css",
+      "AssetFile": "C:\\Users\\Efe\\Desktop\\SalonCruella\\wwwroot\\css\\admin-panel.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1019"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"iZwviiPlP0awjMJyJraTmhW4K04M8irFgl2rcJocSxY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Dec 2024 22:11:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-iZwviiPlP0awjMJyJraTmhW4K04M8irFgl2rcJocSxY="
+        }
+      ]
+    },
+    {
+      "Route": "css/admin-panel.css.gz",
+      "AssetFile": "C:\\Users\\Efe\\Desktop\\SalonCruella\\obj\\Debug\\net9.0\\compressed\\7wck3nkruh-rb9d779ann.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "437"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"GlFwG1HcT3JcQM7Clxm90FIt84TcVXfAf3JBfO2youo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Dec 2024 22:11:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-GlFwG1HcT3JcQM7Clxm90FIt84TcVXfAf3JBfO2youo="
+        }
+      ]
+    },
+    {
+      "Route": "css/admin-panel.rb9d779ann.css",
+      "AssetFile": "C:\\Users\\Efe\\Desktop\\SalonCruella\\obj\\Debug\\net9.0\\compressed\\7wck3nkruh-rb9d779ann.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.002283105023"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "437"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"GlFwG1HcT3JcQM7Clxm90FIt84TcVXfAf3JBfO2youo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Dec 2024 22:11:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"iZwviiPlP0awjMJyJraTmhW4K04M8irFgl2rcJocSxY=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "rb9d779ann"
+        },
+        {
+          "Name": "label",
+          "Value": "css/admin-panel.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-iZwviiPlP0awjMJyJraTmhW4K04M8irFgl2rcJocSxY="
+        }
+      ]
+    },
+    {
+      "Route": "css/admin-panel.rb9d779ann.css",
+      "AssetFile": "C:\\Users\\Efe\\Desktop\\SalonCruella\\wwwroot\\css\\admin-panel.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1019"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"iZwviiPlP0awjMJyJraTmhW4K04M8irFgl2rcJocSxY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Dec 2024 22:11:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "rb9d779ann"
+        },
+        {
+          "Name": "label",
+          "Value": "css/admin-panel.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-iZwviiPlP0awjMJyJraTmhW4K04M8irFgl2rcJocSxY="
+        }
+      ]
+    },
+    {
+      "Route": "css/admin-panel.rb9d779ann.css.gz",
+      "AssetFile": "C:\\Users\\Efe\\Desktop\\SalonCruella\\obj\\Debug\\net9.0\\compressed\\7wck3nkruh-rb9d779ann.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "437"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"GlFwG1HcT3JcQM7Clxm90FIt84TcVXfAf3JBfO2youo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Dec 2024 22:11:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "rb9d779ann"
+        },
+        {
+          "Name": "label",
+          "Value": "css/admin-panel.css.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-GlFwG1HcT3JcQM7Clxm90FIt84TcVXfAf3JBfO2youo="
+        }
+      ]
+    },
     {
       "Route": "css/site.b9sayid5wm.css",
       "AssetFile": "C:\\Users\\Efe\\Desktop\\SalonCruella\\obj\\Debug\\net9.0\\compressed\\rwnlromyty-b9sayid5wm.gz",
