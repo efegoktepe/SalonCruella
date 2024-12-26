@@ -1,7 +1,0 @@
-C:\Users\Efe\Desktop\SalonCruella\obj\Debug\net8.0\SalonCruella.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Efe\Desktop\SalonCruella\obj\Debug\net8.0\SalonCruella.AssemblyInfoInputs.cache
-C:\Users\Efe\Desktop\SalonCruella\obj\Debug\net8.0\SalonCruella.AssemblyInfo.cs
-C:\Users\Efe\Desktop\SalonCruella\obj\Debug\net8.0\SalonCruella.csproj.CoreCompileInputs.cache
-C:\Users\Efe\Desktop\SalonCruella\obj\Debug\net8.0\SalonCruella.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Efe\Desktop\SalonCruella\obj\Debug\net8.0\SalonCruella.RazorAssemblyInfo.cache
-C:\Users\Efe\Desktop\SalonCruella\obj\Debug\net8.0\SalonCruella.RazorAssemblyInfo.cs
