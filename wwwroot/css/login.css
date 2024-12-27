@@ -1,0 +1,88 @@
+/* Arka Plan */
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #000000, #1c1c1c);
+    font-family: 'Roboto', sans-serif;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1); /* Transparan arka plan */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.login-box h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #fff;
+    text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.7);
+}
+
+.login-box h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #ddd;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: #fff;
+    color: #000;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #000;
+    box-shadow: 0 0 4px #555;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #000;
+    background: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn:hover {
+    background: #000;
+    color: #fff;
+    border: 1px solid #fff;
+}
+
+.links {
+    margin-top: 15px;
+}
+
+.links a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.links a:hover {
+    color: #fff;
+    text-decoration: underline;
+}

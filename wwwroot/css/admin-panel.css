@@ -1,0 +1,83 @@
+/* Admin Panel Tasarımı */
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #000, #333);
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.admin-panel {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1); /* Transparan arka plan */
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+    width: 80%;
+    max-width: 600px;
+}
+
+.admin-panel h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.7);
+}
+
+.admin-panel p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #ccc;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Buton Renkleri */
+.btn.blue {
+    background: #007bff;
+}
+
+.btn.blue:hover {
+    background: #0056b3;
+    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.4);
+}
+
+.btn.green {
+    background: #28a745;
+}
+
+.btn.green:hover {
+    background: #1e7e34;
+    box-shadow: 0 6px 12px rgba(40, 167, 69, 0.4);
+}
+
+.btn.yellow {
+    background: #ffc107;
+    color: #000;
+}
+
+.btn.yellow:hover {
+    background: #e0a800;
+    box-shadow: 0 6px 12px rgba(255, 193, 7, 0.4);
+}

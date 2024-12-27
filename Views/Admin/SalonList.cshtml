@@ -1,0 +1,16 @@
+@model IEnumerable<SalonCruella.Models.Salon>
+
+<h1>Salon Listesi</h1>
+<table>
+    <tr>
+        <th>Adı</th>
+        <th>Adresi</th>
+    </tr>
+    @foreach (var salon in Model)
+    {
+        <tr>
+            <td>@salon.Adi</td>
+            <td>@salon.Adres</td>
+        </tr>
+    }
+</table>

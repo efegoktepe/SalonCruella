@@ -1,0 +1,32 @@
+@model IEnumerable<SalonCruella.Models.Salon>
+
+<h2>Randevu Al</h2>
+
+<form asp-action="RandevuAl" method="post" class="form">
+    <div class="form-group">
+        <label for="AdSoyad">Ad Soyad:</label>
+        <input type="text" id="AdSoyad" name="AdSoyad" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label for="Email">E-posta:</label>
+        <input type="email" id="Email" name="Email" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label for="Tarih">Randevu Tarihi:</label>
+        <input type="date" id="Tarih" name="Tarih" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label for="SalonId">Salon Seçin:</label>
+        <select id="SalonId" name="SalonId" class="form-control" required>
+            @foreach (var salon in Model)
+            {
+                <option value="@salon.Id">@salon.Adi</option>
+            }
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Randevu Al</button>
+</form>

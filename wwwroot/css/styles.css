@@ -1,0 +1,135 @@
+/* Genel Stil Ayarları */
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    color: #333; /* Yazı rengi */
+    background-color: #f4f4f4; /* Hafif gri arka plan */
+    height: 100%;
+    overflow-x: hidden; /* Yatay kaydırmayı engeller */
+    box-sizing: border-box; /* Kutu modelini düzgün işler */
+}
+
+/* Hero Bölgesi */
+.hero {
+    background-color: #fff; /* Beyaz zemin */
+    color: #333; /* Yazı rengi */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    text-align: center;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hafif gölge efekti */
+    border-radius: 10px;
+    margin: 40px auto;
+    max-width: 800px;
+}
+
+.hero h1 {
+    font-size: 48px; /* Büyük başlık */
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #222; /* Daha koyu başlık rengi */
+}
+
+.hero h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #555; /* Daha açık başlık tonu */
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #666; /* Metin rengi */
+}
+
+.hero .btn {
+    display: inline-block;
+    background-color: #0066cc; /* Canlı mavi buton */
+    color: white;
+    padding: 12px 24px;
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hafif gölge */
+}
+
+.hero .btn:hover {
+    background-color: #00509e; /* Daha koyu mavi hover */
+}
+
+/* Çıkış Yap Butonu */
+nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px 30px;
+    background-color: #fff; /* Beyaz arka plan */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Hafif gölge */
+    z-index: 1000;
+}
+
+nav .btn {
+    font-size: 14px;
+    background-color: #ff4d4d; /* Kırmızı çıkış butonu */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+nav .btn:hover {
+    background-color: #cc0000; /* Daha koyu kırmızı */
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    color: #777;
+    border-top: 1px solid #ddd; /* İnce bir çizgi */
+    margin-top: 40px;
+}
+
+footer a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Tasarım */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .hero h2 {
+        font-size: 20px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .hero .btn {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+
+    nav .btn {
+        font-size: 12px;
+        padding: 8px 16px;
+    }
+}
