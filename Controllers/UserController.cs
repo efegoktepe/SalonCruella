@@ -12,7 +12,7 @@ namespace SalonCruella.Controllers
 
         public UserController(AppDbContext context)
         {
-            _context = context;
+            this._context = context;
         }
 
         // Kullanıcının randevu alabileceği sayfa

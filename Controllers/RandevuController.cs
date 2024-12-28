@@ -16,7 +16,7 @@ namespace SalonCruella.Controllers
 
         public RandevuController(AppDbContext context)
         {
-            _context = context;
+            this._context = context;
         }
 
         // GET: Randevu

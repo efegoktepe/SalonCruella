@@ -35,12 +35,6 @@
         </div>
 
         <!-- Salon Seçimi -->
-        <div class="mb-3">
-            <label asp-for="SalonId" class="form-label">Salon</label>
-            <select asp-for="SalonId" class="form-select" asp-items="ViewBag.Salonlar"></select>
-            <span asp-validation-for="SalonId" class="text-danger"></span>
-        </div>
-
         <button type="submit" class="btn btn-primary">Kaydet</button>
         <a asp-action="Index" class="btn btn-secondary ms-2">Geri</a>
     </form>

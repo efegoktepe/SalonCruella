@@ -13,7 +13,7 @@ namespace SalonCruella.Controllers
 
         public SalonController(AppDbContext context)
         {
-            _context = context;
+           this._context = context;
         }
 
         // GET: Salon

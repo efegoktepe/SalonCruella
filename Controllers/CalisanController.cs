@@ -2,7 +2,6 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SalonCruella.Areas.Identity.Data;
 using SalonCruella.Data;
@@ -22,7 +21,7 @@ namespace SalonCruella.Controllers
         // GET: Calisan
         public async Task<IActionResult> Index()
         {
-            var calisanlar = await _context.Calisanlar.Include(c => c.Salon).ToListAsync();
+            var calisanlar = await _context.Calisanlar.ToListAsync();
             return View(calisanlar);
         }
 
@@ -36,7 +35,6 @@ namespace SalonCruella.Controllers
             }
 
             var calisan = await _context.Calisanlar
-                .Include(c => c.Salon)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
             if (calisan == null)
@@ -51,15 +49,33 @@ namespace SalonCruella.Controllers
         // GET: Calisan/Create
         public IActionResult Create()
         {
-            ViewBag.Salonlar = new SelectList(_context.Salonlar, "Id", "Adi");
             return View();
         }
 
-         // POST: Calisan/Create
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-   
-        
+        // POST: Calisan/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("Adi,UzmanlikAlani,BaslangicSaati,BitisSaati")] Calisan calisan)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Calisanlar.Add(calisan);
+                    await _context.SaveChangesAsync();
+                    TempData["SuccessMessage"] = "Çalışan başarıyla oluşturuldu.";
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (Exception ex)
+                {
+                    TempData["ErrorMessage"] = "Çalışan eklenirken bir hata oluştu.";
+                    Console.WriteLine($"Hata: {ex.Message}");
+                    return View(calisan);
+                }
+            }
+
+            return View(calisan);
+        }
 
         // GET: Calisan/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -77,14 +93,13 @@ namespace SalonCruella.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            ViewBag.Salonlar = new SelectList(_context.Salonlar, "Id", "Adi", calisan.SalonId);
             return View(calisan);
         }
 
         // POST: Calisan/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Adi,UzmanlikAlani,BaslangicSaati,BitisSaati,SalonId")] Calisan calisan)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Adi,UzmanlikAlani,BaslangicSaati,BitisSaati")] Calisan calisan)
         {
             if (id != calisan.Id)
             {
@@ -92,27 +107,23 @@ namespace SalonCruella.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                TempData["ErrorMessage"] = "Geçersiz giriş. Lütfen tüm alanları doğru doldurun.";
-                ViewBag.Salonlar = new SelectList(_context.Salonlar, "Id", "Adi", calisan.SalonId);
-                return View(calisan);
+                try
+                {
+                    _context.Update(calisan);
+                    await _context.SaveChangesAsync();
+                    TempData["SuccessMessage"] = "Çalışan başarıyla güncellendi.";
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    TempData["ErrorMessage"] = "Çalışan güncellenirken bir hata oluştu.";
+                    Console.WriteLine("Veritabanı güncelleme hatası.");
+                }
             }
 
-            try
-            {
-                _context.Update(calisan);
-                await _context.SaveChangesAsync();
-                TempData["SuccessMessage"] = "Çalışan başarıyla güncellendi.";
-                return RedirectToAction(nameof(Index));
-            }
-            catch (Exception ex)
-            {
-                TempData["ErrorMessage"] = "Çalışan güncellenirken bir hata oluştu.";
-                Console.WriteLine($"Hata: {ex.Message}");
-                ViewBag.Salonlar = new SelectList(_context.Salonlar, "Id", "Adi", calisan.SalonId);
-                return View(calisan);
-            }
+            return View(calisan);
         }
 
         // GET: Calisan/Delete/5
@@ -125,7 +136,6 @@ namespace SalonCruella.Controllers
             }
 
             var calisan = await _context.Calisanlar
-                .Include(c => c.Salon)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (calisan == null)
             {

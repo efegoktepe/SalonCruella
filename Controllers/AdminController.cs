@@ -11,7 +11,7 @@ namespace SalonCruella.Controllers
 
         public AdminController(AppDbContext context)
         {
-            _context = context;
+            this._context = context;
         }
 
         public IActionResult Index()
